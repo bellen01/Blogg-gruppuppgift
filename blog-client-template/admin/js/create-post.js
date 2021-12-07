@@ -1,28 +1,35 @@
-//Till datumformateringen:
-//let dateAndTimeFunction = (blogPostDate) => {
-// let dateAndTime = new Date(blogPostDate);
-//             let year = dateAndTime.getFullYear();
-//             let month = dateAndTime.getMonth() + 1;
-//             if (month < 10) {
-//                 month = `0${month}`;
-//             }
-//             let day = dateAndTime.getDate();
-//             if (day < 10) {
-//                 day = `0${day}`;
-//             }
-//             let formattedDateAndTime = `${year}-${month}-${day} kl ${dateAndTime.getHours()}`;
-//return formattedDateAndTime;
-// }
-//let dateAndTime = dateAndTimeFunction(blogPost.date);
 window.onload = function () {
     createPostEvent();
 }
 
+let title = document.getElementById('title');
+let author = document.getElementById('author');
+let content = document.getElementById('content');
+let displayErrorMessage = document.getElementById('error-messages');
+
+function isStringEmpty(text) {
+    return text.trim() === '';
+}
 
 function createPostEvent() {
     let form = document.getElementById('create-post-form');
     form.addEventListener('submit', async function (e) {
         e.preventDefault();
+        displayErrorMessage.innerHTML = '';
+        let errorMessage = '';
+        if (isStringEmpty(title.value)) {
+            errorMessage += 'Title is required<br>';
+        }
+        if (isStringEmpty(author.value)) {
+            errorMessage += 'Author is required<br>';
+        }
+        if (isStringEmpty(content.value)) {
+            errorMessage += 'Content is required<br>';
+        }
+        if (errorMessage != '') {
+            displayErrorMessage.innerHTML = errorMessage;
+            return;
+        }
 
         let formData = new FormData(form);
         formDataObject = {
@@ -34,7 +41,7 @@ function createPostEvent() {
         try {
             await fetch('http://localhost:5000/posts', {
                 method: 'POST',
-                header: {
+                headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(formDataObject),
