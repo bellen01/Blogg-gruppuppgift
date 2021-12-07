@@ -10,7 +10,7 @@
 <body>
     <main id="create-post-container">
         <div>
-            <a href="../index.html">Blog page</a>
+            <a href="../index.html" id="blogPageLink">Blog page</a>
         </div>
         <h1>New post</h1>
         <form id="create-post-form">
@@ -23,7 +23,17 @@
             <label for="content">Content</label><br>
             <textarea name="content" id="content" cols="30" rows="10"></textarea><br>
 
-            <input type="submit" value="Create"><br>
+            <!-- För vg -->
+            <!-- <label for="tags">Tags</label><br>
+            <select name="tags" id="tags" size="5" multiple>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+            </select><br> -->
+
+            <input type="submit" id="create-btn" value="Create"><br>
             <a href="index.html">&#x2190; back</a>
         </form>
 
