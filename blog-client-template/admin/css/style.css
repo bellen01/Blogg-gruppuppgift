@@ -4,6 +4,7 @@
 
 body {
     background-color: rgba(216, 201, 159, 0.76);
+    font-family: "Monaco", monospace;
 }
 
 #container {
@@ -12,8 +13,7 @@ body {
 }
 
 input,
-textarea,
-select {
+textarea {
     width: 100%;
     margin-bottom: 10px;
     border-radius: 5px;
@@ -33,7 +33,14 @@ a {
 #bloglink {
     text-decoration: none;
     color: darkblue;
-    margin-left: 530px;
+    margin-left: 510px;
+    
+}
+
+#bloglink:hover {
+    text-decoration: underline;
+    color: rgba(42, 42, 187, 0.692);
+    
 }
 
 a:hover {
@@ -43,5 +50,22 @@ a:hover {
 
 #error-messages {
     color: rgb(241, 2, 2);
-    
+}
+
+#update-btn {
+    background-color: white;
+    cursor: pointer;
+}
+
+#update-btn:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+#tags {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    padding: 12px;
 }

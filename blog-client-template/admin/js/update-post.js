@@ -11,9 +11,11 @@
     
 }
 
-let title = document.getElementById('title');
-let author = document.getElementById('author');
-let content = document.getElementById('content');
+// let title = document.getElementById('title');
+// let author = document.getElementById('author');
+// let content = document.getElementById('content');
+// let tags = document.getElementById('tags');
+
 let displayErrorMessage = document.getElementById('error-messages');
 
 function isStringEmpty(text) {
@@ -40,6 +42,7 @@ async function getPost(id) {
         document.getElementById('title').value = post.title;
         document.getElementById('author').value = post.author;
         document.getElementById('content').value = post.content;
+        document.getElementById('tags').value = post.tags;
     } catch(error) {
         console.log(error);
     }
@@ -62,7 +65,8 @@ function updatePostEvent(id) {
         formDataObject = {
             "content": formData.get('content'), 
             "title": formData.get('title'),
-            "author": formData.get('author')
+            "author": formData.get('author'),
+            "tags": formData.get('tags')
         }
 
         try {
