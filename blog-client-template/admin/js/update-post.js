@@ -11,6 +11,27 @@
     
 }
 
+let title = document.getElementById('title');
+let author = document.getElementById('author');
+let content = document.getElementById('content');
+let displayErrorMessage = document.getElementById('error-messages');
+
+function isStringEmpty(text) {
+    return text.trim() === '';
+}
+let errorMessage = '';
+function errorMessages(titleValue, authorValue, contentValue) {
+    if (isStringEmpty(titleValue)) {
+        errorMessage += 'Title is required<br>';
+    }
+    if (isStringEmpty(authorValue)) {
+        errorMessage += 'Author is required<br>';
+    }
+    if (isStringEmpty(contentValue)) {
+        errorMessage += 'Content is required<br>';
+    }
+}
+
 async function getPost(id) {
     try {
         let response = await fetch('http://localhost:5000/posts/' + id);
@@ -30,6 +51,13 @@ function updatePostEvent(id) {
     let form = document.getElementById('update-post-form');
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
+        displayErrorMessage.innerHTML = '';
+        errorMessage = '';
+        errorMessages(title.value, author.value, content.value);
+        if (errorMessage != '') {
+            displayErrorMessage.innerHTML = errorMessage;
+            return;
+        }
         let formData = new FormData(form);
         formDataObject = {
             "content": formData.get('content'), 

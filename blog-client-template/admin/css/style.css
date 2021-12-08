@@ -1,3 +1,47 @@
-#bloglink {
+#bloglink-container {
     border-bottom: 1px solid black;
+}
+
+body {
+    background-color: rgba(216, 201, 159, 0.76);
+}
+
+#container {
+    width: 600px;
+    margin: 20px auto;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+}
+
+input {
+    padding: 12px;
+}
+
+a {
+    text-decoration: none;
+    color: darkblue;
+    
+}
+
+#bloglink {
+    text-decoration: none;
+    color: darkblue;
+    margin-left: 530px;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: rgba(42, 42, 187, 0.692);
+}
+
+#error-messages {
+    color: rgb(241, 2, 2);
+    
 }
