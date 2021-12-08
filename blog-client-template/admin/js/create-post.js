@@ -27,13 +27,15 @@ function errorMessages(titleValue, authorValue, contentValue) {
 let tags = ["Politics", "Satire", "Autobiography", "Lorem Gang"];
 let tagsHTML = '';
 //bryt ut till funktion
-for (let tag of tags) {
-
-    tagsHTML += `
-    <option value="${tag}">${tag}</option>`
+function createTagsSelect(tags) {
+    for (let tag of tags) {
+        tagsHTML += `
+        <option value="${tag}">${tag}</option>`
+    }
+    document.getElementById('tags').innerHTML = tagsHTML;
 }
-document.getElementById('tags').innerHTML = tagsHTML;
 
+createTagsSelect(tags);
 
 function createPostEvent() {
     let form = document.getElementById('create-post-form');
@@ -69,8 +71,10 @@ function createPostEvent() {
         formDataObject = {
             "title": formData.get('title'),
             "content": formData.get('content'),
-            "author": formData.get('author')
+            "author": formData.get('author'),
+            "tags": formData.getAll('tags')
         }
+
 
         try {
             await fetch('http://localhost:5000/posts', {
