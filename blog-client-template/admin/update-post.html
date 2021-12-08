@@ -7,14 +7,24 @@
 </head>
 <body>
     <div id="container">
+
+    <div id="bloglink">
+        <a href="../index.html">Blog page</a>
+    </div>
+
         <h1>Update pun</h1>
 
-        <form id="update-pun-form">
-            <label for="">Content</label>
-            <textarea name="content" id="content-textarea" cols="30" rows="10"></textarea>
+        <form id="update-post-form">
+    
+            <label for="title">Title</label> <br>
+            <input type="text" name="title" id="title"> <br> <br>
+            <label for="author">Author</label> <br>
+            <input type="text" name="author" id=author> <br> <br>
+            <label for="content">Content</label> <br>
+            <textarea name="content" id="content" cols="30" rows="10"></textarea> <br> <br>
 
-            <input type="submit" value="Update">
-            <a href="index.html">&#x2190; back</a>
+            <input type="submit" value="Update"> <br> <br>
+            <a href="index.html">&#x2190; Back</a>
         </form>
     </div>
     <script src="js/update-post.js"></script>

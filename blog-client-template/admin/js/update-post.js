@@ -4,19 +4,21 @@
     let urlParams = new URLSearchParams(queryString);
     console.log(urlParams.get('id'));
 
-    getPun(urlParams.get('id'));
+    getPost(urlParams.get('id'));
 
-    updatePunEvent(urlParams.get('id'))
+    updatePostEvent(urlParams.get('id'))
 
     
 }
 
-async function getPun(id) {
+async function getPost(id) {
     try {
-        let response = await fetch('https://puns-app.herokuapp.com/puns/' + id);
-        let pun = await response.json();
+        let response = await fetch('http://localhost:5000/posts/' + id);
+        let post = await response.json();
 
-        document.getElementById('content-textarea').value = pun.content;
+        document.getElementById('title').value = post.title;
+        document.getElementById('author').value = post.author;
+        document.getElementById('content').value = post.content;
     } catch(error) {
         console.log(error);
     }
@@ -24,17 +26,19 @@ async function getPun(id) {
 
 
 
-function updatePunEvent(id) {
-    let form = document.getElementById('update-pun-form');
+function updatePostEvent(id) {
+    let form = document.getElementById('update-post-form');
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
         let formData = new FormData(form);
         formDataObject = {
-            "content": formData.get('content')
+            "content": formData.get('content'), 
+            "title": formData.get('title'),
+            "author": formData.get('author')
         }
 
         try {
-            await fetch('https://puns-app.herokuapp.com/puns/' + id, {
+            await fetch('http://localhost:5000/posts/' + id, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
