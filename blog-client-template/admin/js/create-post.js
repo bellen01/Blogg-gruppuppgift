@@ -1,13 +1,14 @@
 window.onload = function () {
+    let displayErrorMessage = document.getElementById('error-messages');
+    let form = document.getElementById('create-post-form');
     createPostEvent();
     // let title = document.getElementById('title');
     // let author = document.getElementById('author');
     // let content = document.getElementById('content');
-    let displayErrorMessage = document.getElementById('error-messages');
 
 
 
-    //flytta till egen js som både jag och Linn kan använda?
+    //flytta till egen js som både jag och Linn kan använda? Flyttat till mutual-code men kommenterat ut
     function isStringEmpty(text) {
         return text.trim() === '';
     }
@@ -18,16 +19,17 @@ window.onload = function () {
         "Content",
     ]
 
-    let errorMessage = '';
+    // let errorMessage = '';
     function getErrorMessages(parameter) {
         let input = document.getElementById(parameter);
         if (isStringEmpty(input.value)) {
-            errorMessage += parameter + ' is required!<br>';
+            return parameter + ' is required!<br>';
         }
+        return '';
     }
 
 
-    //skriva om till class och objekt??
+    //skriva om till class och objekt?? Skrivit om enligt ovan fast inte till objekt och class. Får se om jag gör det.
     // function errorMessages(titleValue, authorValue, contentValue) {
     //     let errorMessage = '';
     //     if (isStringEmpty(titleValue)) {
@@ -43,8 +45,14 @@ window.onload = function () {
     // }
 
 
-    //flytta till egen js som både jag och Linn kan använda?
-    let tags = ["Politics", "Satire", "Autobiography", "Lorem Gang"];
+    //flytta till egen js som både jag och Linn kan använda? Flyttat till mutual-code men kommenterat ut tills vi vet
+    let tags = [
+        "Politics",
+        "Satire",
+        "Autobiography",
+        "Lorem Gang"
+    ]
+
     function createTagsSelect(tags, tagsSelected) {
         let tagsHTML = '';
         for (let tag of tags) {
@@ -57,47 +65,67 @@ window.onload = function () {
         document.getElementById('tags').innerHTML = tagsHTML;
     }
 
+    function checkErrorMessages() {
+        let errorMessage = '';
+        for (let parameter of errorMessageParameters) {
+            errorMessage += getErrorMessages(parameter);
+        }
+        return errorMessage;
+    }
+
     createTagsSelect(tags, null);
 
     function createPostEvent() {
-        let form = document.getElementById('create-post-form');
         form.addEventListener('submit', async function (e) {
             e.preventDefault();
             displayErrorMessage.innerHTML = '';
-            errorMessage = '';
 
-            for (let parameter of errorMessageParameters) {
-                getErrorMessages(parameter);
-            }
-            // errorMessage = errorMessages(title.value, author.value, content.value);
-            // let errorMessage = errorMessages(title.value, author.value, content.value);
+            // errorMessage = '';
+            // for (let parameter of errorMessageParameters) {
+            //     getErrorMessages(parameter);
+            // }
+
+            let errorMessage = checkErrorMessages();
+
             if (errorMessage != '') {
                 displayErrorMessage.innerHTML = errorMessage;
                 return;
             }
 
-            //bryt ut?
-            let formData = new FormData(form);
-            formDataObject = {
-                "title": formData.get('title'),
-                "content": formData.get('content'),
-                "author": formData.get('author'),
-                "tags": formData.getAll('tags')
-            }
+            let formDataObject = createFormObject(form);
 
-            //Bryt ut till fetchfunktion?
-            try {
-                await fetch('http://localhost:5000/posts', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formDataObject),
-                })
-                location.replace('index.html');
-            } catch (error) {
-                console.log(error);
-            }
+            postBlogPostFetchFunction(formDataObject);
         });
     }
 }
+function createFormObject(form) {
+    let formData = new FormData(form);
+    let formDataObject = {
+        "title": formData.get('title'),
+        "content": formData.get('content'),
+        "author": formData.get('author'),
+        "tags": formData.getAll('tags')
+    }
+    return formDataObject;
+}
+
+async function postBlogPostFetchFunction(object) {
+    try {
+        await fetch('http://localhost:5000/posts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(object),
+        })
+        location.replace('index.html');
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+
+
+
+
