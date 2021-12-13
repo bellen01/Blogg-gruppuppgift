@@ -1,11 +1,40 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Create new post</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+    <main id="create-post-container">
+        <div>
+            <a href="../index.html" id="blogPageLink">Blog page</a>
+        </div>
+        <h1>New post</h1>
+        <div id="error-messages"></div>
+        <form id="create-post-form">
+            <label for="title">Title</label><br>
+            <input type="text" name="title" id="Title"><br>
+
+            <label for=" author">Author</label><br>
+            <input type="text" name="author" id="Author"><br>
+
+            <label for="content">Content</label><br>
+            <textarea name="content" id="Content" cols="30" rows="10"></textarea><br>
+
+            <label for="tags">Tags</label><br>
+            <select name="tags" id="tags" size="4" multiple>
+            </select><br>
+
+            <input type="submit" id="create-btn" value="Create"><br>
+            <a href="index.html">&#x2190; back</a>
+        </form>
+
+
+    </main>
     <script src="js/create-post.js"></script>
 </body>
+
 </html>
