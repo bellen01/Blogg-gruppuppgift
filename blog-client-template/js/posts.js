@@ -2,21 +2,6 @@ window.onload = function () {
     getBlogPosts();
 };
 
-let dateAndTimeFunction = (date) => {
-    let dateAndTime = new Date(date);
-    let year = dateAndTime.getFullYear();
-    let month = dateAndTime.getMonth() + 1;
-    if (month < 10) {
-        month = `0${month}`;
-    }
-    let day = dateAndTime.getDate();
-    if (day < 10) {
-        day = `0${day}`;
-    }
-    let formattedDateAndTime = `${year}-${month}-${day} ${dateAndTime.getHours()}:${dateAndTime.getMinutes()}`;
-    return formattedDateAndTime;
-}
-
 async function getBlogPosts() {
     try {
         let response = await fetch(`http://localhost:5000/posts`);
