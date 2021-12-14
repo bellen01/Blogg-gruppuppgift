@@ -1,4 +1,4 @@
-    window.onload = function() {
+window.onload = function () {
     let queryString = location.search;
     console.log(queryString);
     let urlParams = new URLSearchParams(queryString);
@@ -8,7 +8,7 @@
 
     updatePostEvent(urlParams.get('id'))
 
-    
+
 }
 
 // let title = document.getElementById('title');
@@ -40,13 +40,13 @@ async function getPost(id) {
         let response = await fetch('http://localhost:5000/posts/61ae3e3a73fc4745a8661836');
         let post = await response.json();
 
-        document.getElementById('title').value = post.title;
-        document.getElementById('author').value = post.author;
-        document.getElementById('content').value = post.content;
-        document.getElementById('tags').value = post.tags;
+        document.getElementById('Title').value = post.title;
+        document.getElementById('Author').value = post.author;
+        document.getElementById('Content').value = post.content;
+        // document.getElementById('tags').value = post.tags;
         let tagselceted = post.tags;
         createTagsSelect(tags, tagselceted);
-    } catch(error) {
+    } catch (error) {
         console.log(error);
     }
 }
@@ -55,7 +55,7 @@ async function getPost(id) {
 
 function updatePostEvent(id) {
     let form = document.getElementById('update-post-form');
-    form.addEventListener('submit', async function(e) {
+    form.addEventListener('submit', async function (e) {
         e.preventDefault();
         // displayErrorMessage.innerHTML = '';
         // errorMessage = '';
@@ -75,7 +75,7 @@ function updatePostEvent(id) {
 
         let formData = new FormData(form);
         formDataObject = {
-            "content": formData.get('content'), 
+            "content": formData.get('content'),
             "title": formData.get('title'),
             "author": formData.get('author'),
             "tags": formData.getAll('tags')
@@ -91,9 +91,8 @@ function updatePostEvent(id) {
             })
 
             location.replace('index.html');
-        } catch(error) {
+        } catch (error) {
             console.log(error);
         }
     })
-
 }
