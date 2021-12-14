@@ -18,31 +18,34 @@
 
 let displayErrorMessage = document.getElementById('error-messages');
 
-function isStringEmpty(text) {
-    return text.trim() === '';
-}
-let errorMessage = '';
-function errorMessages(titleValue, authorValue, contentValue) {
-    if (isStringEmpty(titleValue)) {
-        errorMessage += 'Title is required<br>';
-    }
-    if (isStringEmpty(authorValue)) {
-        errorMessage += 'Author is required<br>';
-    }
-    if (isStringEmpty(contentValue)) {
-        errorMessage += 'Content is required<br>';
-    }
-}
+// function isStringEmpty(text) {
+//     return text.trim() === '';
+// }
+// let errorMessage = '';
+// function errorMessages(titleValue, authorValue, contentValue) {
+//     if (isStringEmpty(titleValue)) {
+//         errorMessage += 'Title is required<br>';
+//     }
+//     if (isStringEmpty(authorValue)) {
+//         errorMessage += 'Author is required<br>';
+//     }
+//     if (isStringEmpty(contentValue)) {
+//         errorMessage += 'Content is required<br>';
+//     }
+// }
+
 
 async function getPost(id) {
     try {
-        let response = await fetch('http://localhost:5000/posts/' + id);
+        let response = await fetch('http://localhost:5000/posts/61ae3e3a73fc4745a8661836');
         let post = await response.json();
 
         document.getElementById('title').value = post.title;
         document.getElementById('author').value = post.author;
         document.getElementById('content').value = post.content;
         document.getElementById('tags').value = post.tags;
+        let tagselceted = post.tags;
+        createTagsSelect(tags, tagselceted);
     } catch(error) {
         console.log(error);
     }
@@ -54,23 +57,32 @@ function updatePostEvent(id) {
     let form = document.getElementById('update-post-form');
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
+        // displayErrorMessage.innerHTML = '';
+        // errorMessage = '';
+        // errorMessages(title.value, author.value, content.value);
+        // if (errorMessage != '') {
+        //     displayErrorMessage.innerHTML = errorMessage;
+        //     return;
+        // }
         displayErrorMessage.innerHTML = '';
-        errorMessage = '';
-        errorMessages(title.value, author.value, content.value);
+
+        let errorMessage = generateErrorMessages();
+
         if (errorMessage != '') {
             displayErrorMessage.innerHTML = errorMessage;
             return;
         }
+
         let formData = new FormData(form);
         formDataObject = {
             "content": formData.get('content'), 
             "title": formData.get('title'),
             "author": formData.get('author'),
-            "tags": formData.get('tags')
+            "tags": formData.getAll('tags')
         }
 
         try {
-            await fetch('http://localhost:5000/posts/' + id, {
+            await fetch('http://localhost:5000/posts/61ae3e3a73fc4745a8661836', {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
