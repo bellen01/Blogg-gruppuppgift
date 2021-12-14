@@ -6,6 +6,31 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <div id="container">
+
+    <div id="bloglink-container">
+        <br>
+        <a href="../index.html" id="bloglink">Blog page</a>
+    </div>
+
+        <h1>Update post</h1>
+        <div id="error-messages"></div>
+
+        <form id="update-post-form">
+    
+            <label for="title">Title</label> <br>
+            <input type="text" name="title" id="title"> <br> <br>
+            <label for="author">Author</label> <br>
+            <input type="text" name="author" id=author> <br> <br>
+            <label for="content">Content</label> <br>
+            <textarea name="content" id="content" cols="30" rows="10"></textarea> <br> <br>
+            <label for="tags">Tags</label> <br>
+            <select name="tags" id="tags"></select> <br> <br>
+
+            <input type="submit" value="Update" id="update-btn"> <br> <br>
+            <a href="index.html">&#x2190; Back</a>
+        </form>
+    </div>
     <script src="js/update-post.js"></script>
 </body>
 </html>

@@ -1,3 +1,74 @@
+#bloglink-container {
+    border-bottom: 1px solid black;
+}
 
+body {
+    background-color: rgba(216, 201, 159, 0.76);
+    font-family: "Monaco", monospace;
+}
 
+#container {
+    width: 600px;
+    margin: 20px auto;
+}
 
+input,
+textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    font-family: "Monaco", monospace;
+}
+
+input {
+    padding: 12px;
+}
+
+a {
+    text-decoration: none;
+    color: darkblue;
+    
+}
+
+#bloglink {
+    text-decoration: none;
+    color: darkblue;
+    margin-left: 510px;
+    
+}
+
+#bloglink:hover {
+    text-decoration: underline;
+    color: rgba(42, 42, 187, 0.692);
+    
+}
+
+a:hover {
+    text-decoration: underline;
+    color: rgba(42, 42, 187, 0.692);
+}
+
+#error-messages {
+    color: rgb(241, 2, 2);
+}
+
+#update-btn {
+    background-color: white;
+    cursor: pointer;
+    font-family: "Monaco", monospace;
+}
+
+#update-btn:hover {
+    background-color: lightgray;
+    cursor: pointer;
+    font-family: "Monaco", monospace;
+}
+
+#tags {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    padding: 12px;
+}
