@@ -18,6 +18,7 @@ textarea {
     margin-bottom: 10px;
     border-radius: 5px;
     border: 1px solid #333;
+    font-family: "Monaco", monospace;
 }
 
 input {
@@ -55,11 +56,13 @@ a:hover {
 #update-btn {
     background-color: white;
     cursor: pointer;
+    font-family: "Monaco", monospace;
 }
 
 #update-btn:hover {
     background-color: lightgray;
     cursor: pointer;
+    font-family: "Monaco", monospace;
 }
 
 #tags {
