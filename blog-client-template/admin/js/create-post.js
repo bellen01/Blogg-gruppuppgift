@@ -48,8 +48,3 @@ async function postBlogPostFetchFunction(object) {
         console.log(error);
     }
 }
-
-
-
-
-

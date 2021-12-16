@@ -1,6 +1,5 @@
 //File for code and functions that we need to use on multiple pages
 
-//Kod för validering av fält och felmeddelanden. Kan användas för både create och update
 function isStringEmpty(text) {
     return text.trim() === '';
 }
@@ -27,7 +26,7 @@ function generateErrorMessages() {
     return errorMessage;
 }
 
-//Kod för tags, kan användas för både create och update
+
 let tags = [
     "Politics",
     "Satire",
@@ -47,7 +46,7 @@ function createTagsSelect(tags, tagsSelected) {
     document.getElementById('tags').innerHTML = tagsHTML;
 }
 
-// Function for formatting the date of the blog to make it beautiful, courtesy of Isabelle.
+
 let dateAndTimeFunction = (date) => {
     let dateAndTime = new Date(date);
     let year = dateAndTime.getFullYear();
