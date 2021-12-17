@@ -15,7 +15,7 @@ async function getBlogPost() {
         
             <h2>${blogPost.title}</h2>
             <p>${blogPost.author} <br> ${dateAndTime}</p>
-            <p>${blogPost.tags.join(", ")}</p>
+            <p>Tags: ${blogPost.tags.join(", ")}</p>
             <p data-id="${blogPost._id}"> ${blogPost.content}</p>
             <hr> 
             `;

@@ -13,7 +13,7 @@ async function getBlogPosts() {
             
             <h2>${blogPost.title}</h2>
             <p>${blogPost.author} <br> ${dateAndTime}</p>
-            <p>${blogPost.tags.join(", ")}</p>
+            <p>Tags: ${blogPost.tags.join(", ")}</p>
             <p data-id="${blogPost._id}"> ${blogPost.content.substring(0, 100)}... <a href="post.html?id=${blogPost._id}">read more</a></p>
             <hr> 
             `;
