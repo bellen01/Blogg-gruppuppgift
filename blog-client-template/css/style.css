@@ -13,4 +13,9 @@
     display: flex;
     justify-content: space-around;
     font-family: "Monaco", monospace;
+    color: darkblue;
+}
+
+body {
+    background-color: rgba(223, 255, 182, 0.486);
 }
