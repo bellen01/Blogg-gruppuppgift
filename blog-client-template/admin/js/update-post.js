@@ -37,7 +37,7 @@ let displayErrorMessage = document.getElementById('error-messages');
 
 async function getPost(id) {
     try {
-        let response = await fetch('http://localhost:5000/posts/61ae3e3a73fc4745a8661836');
+        let response = await fetch('http://localhost:5000/posts/' + 1);
         let post = await response.json();
 
         document.getElementById('Title').value = post.title;
@@ -82,7 +82,7 @@ function updatePostEvent(id) {
         }
 
         try {
-            await fetch('http://localhost:5000/posts/61ae3e3a73fc4745a8661836', {
+            await fetch('http://localhost:5000/posts/' + 1, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
