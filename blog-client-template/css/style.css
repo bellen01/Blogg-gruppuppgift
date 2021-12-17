@@ -1,13 +1,16 @@
 #blogPostContainer {
     width: 500px;
     margin: 0 auto;
+    font-family: "Monaco", monospace;
 }
 
 .title {
     text-align: center;
+    font-family: "Monaco", monospace;
 }
 
 .adminLink {
     display: flex;
     justify-content: space-around;
+    font-family: "Monaco", monospace;
 }
