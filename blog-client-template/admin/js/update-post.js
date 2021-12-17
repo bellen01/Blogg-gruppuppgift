@@ -11,29 +11,7 @@ window.onload = function () {
 
 }
 
-// let title = document.getElementById('title');
-// let author = document.getElementById('author');
-// let content = document.getElementById('content');
-// let tags = document.getElementById('tags');
-
 let displayErrorMessage = document.getElementById('error-messages');
-
-// function isStringEmpty(text) {
-//     return text.trim() === '';
-// }
-// let errorMessage = '';
-// function errorMessages(titleValue, authorValue, contentValue) {
-//     if (isStringEmpty(titleValue)) {
-//         errorMessage += 'Title is required<br>';
-//     }
-//     if (isStringEmpty(authorValue)) {
-//         errorMessage += 'Author is required<br>';
-//     }
-//     if (isStringEmpty(contentValue)) {
-//         errorMessage += 'Content is required<br>';
-//     }
-// }
-
 
 async function getPost(id) {
     try {
@@ -43,7 +21,6 @@ async function getPost(id) {
         document.getElementById('Title').value = post.title;
         document.getElementById('Author').value = post.author;
         document.getElementById('Content').value = post.content;
-        // document.getElementById('tags').value = post.tags;
         let tagselceted = post.tags;
         createTagsSelect(tags, tagselceted);
     } catch (error) {
@@ -57,13 +34,6 @@ function updatePostEvent(id) {
     let form = document.getElementById('update-post-form');
     form.addEventListener('submit', async function (e) {
         e.preventDefault();
-        // displayErrorMessage.innerHTML = '';
-        // errorMessage = '';
-        // errorMessages(title.value, author.value, content.value);
-        // if (errorMessage != '') {
-        //     displayErrorMessage.innerHTML = errorMessage;
-        //     return;
-        // }
         displayErrorMessage.innerHTML = '';
 
         let errorMessage = generateErrorMessages();
