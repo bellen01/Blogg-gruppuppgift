@@ -1,14 +1,8 @@
 window.onload = function () {
     let queryString = location.search;
-    console.log(queryString);
     let urlParams = new URLSearchParams(queryString);
-    console.log(urlParams.get('id'));
-
     getPost(urlParams.get('id'));
-
     updatePostEvent(urlParams.get('id'))
-
-
 }
 
 let displayErrorMessage = document.getElementById('error-messages');
@@ -27,8 +21,6 @@ async function getPost(id) {
         console.log(error);
     }
 }
-
-
 
 function updatePostEvent(id) {
     let form = document.getElementById('update-post-form');

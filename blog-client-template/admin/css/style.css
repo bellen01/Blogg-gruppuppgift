@@ -80,9 +80,5 @@ td {
     border: 1px solid black;
     border-collapse: collapse;
     background-color: white;
-}
-
-
-.actionBtn {
-    width: 9em;
+    padding: 0.5em;
 }

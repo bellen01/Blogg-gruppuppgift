@@ -1,5 +1,3 @@
-//File for code and functions that we need to use on multiple pages
-
 function isStringEmpty(text) {
     return text.trim() === '';
 }
@@ -26,7 +24,6 @@ function generateErrorMessages() {
     return errorMessage;
 }
 
-
 let tags = [
     "Politics",
     "Satire",
@@ -45,7 +42,6 @@ function createTagsSelect(tags, tagsSelected) {
     }
     document.getElementById('tags').innerHTML = tagsHTML;
 }
-
 
 let dateAndTimeFunction = (date) => {
     let dateAndTime = new Date(date);

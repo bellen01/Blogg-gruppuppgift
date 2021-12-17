@@ -19,7 +19,8 @@ async function fetchAllPosts() {
             <td>${formattedDate}</td>
             <td>${tags}</td>
             <td>
-            <a href="update-post.html?id=${post._id}" class="update-post">Update</a> | <a href="#" class="delete-post" data-id="${post._id}">Delete</a>
+            <a href="update-post.html?id=${post._id}" class="update-post">Update</a> <br>
+            <a href="#" class="delete-post" data-id="${post._id}">Delete</a>
             </td>
             </tr>
             `
