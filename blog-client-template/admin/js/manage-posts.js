@@ -7,8 +7,6 @@ async function fetchAllPosts() {
     try {
         let response = await fetch('http://localhost:5000/posts');
         let posts = await response.json();
-        console.log(posts);
-
 
         for (let post of posts) {
             let formattedDate = dateAndTimeFunction(post.date);
